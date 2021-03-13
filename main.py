@@ -1,6 +1,8 @@
 
 
 # Qt libraries
+import os
+import subprocess
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QFileDialog
@@ -60,6 +62,8 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.btn_facebook.clicked.connect(self.openFacebook)
         self.btn_investigate.clicked.connect(self.investigate)
 
+        self.btn_openResults.clicked.connect(self.openResultFile)
+
 
     def deactivateAllSocialBtns(self):
         self.btn_facebook.setEnabled(False)
@@ -74,6 +78,11 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def checkWantedProfiles(self):
         if self.check_facebook.isChecked() :
             sherlockAdapter.addSearchProfile("facebook")
+        if self.check_instagram.isChecked():
+            sherlockAdapter.addSearchProfile("instagram")
+
+    def checkUsername(self):
+        self.sherlock.addUsername("test")
 
     def investigate(self):
         print("Investigation started")
@@ -81,12 +90,19 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # deactivate button until investigation finished
         self.btn_investigate.setEnabled(False)
 
-       # self.checkWantedProfiles()
+        self.checkUsername()
+
+        self.checkWantedProfiles()
 
         self.sherlock.investigate()
 
         print("Investigation finished")
         self.btn_investigate.setEnabled(True)
+
+    def openResultFile(self):
+        filename = "discoveries.txt"
+        webbrowser.open(filename)
+
 
 
 
