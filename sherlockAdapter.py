@@ -7,10 +7,10 @@ import sherlock
 class sherlockAdapter:
 
     __wantedProfiles = ""
-    __generalSettings = " --print-found " + " -o discoveries.txt"
+    __generalSettings = " --print-found " + " --csv -o discoveries.txt"
     __fullResult = ""
     __usernames = ""
-    __timeout = 0
+    __timeout = 1
 
     def __init__(self):
         self.__wantedProfiles = ""
@@ -39,6 +39,7 @@ if __name__ == "__main__":
     adapter = sherlockAdapter()
 
     adapter.addSearchProfile("facebook")
+    adapter.addSearchProfile("gitlab")
     adapter.addUsername("Nutzer")
 
     adapter.investigate()

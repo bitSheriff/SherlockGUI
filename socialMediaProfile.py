@@ -5,6 +5,8 @@ class socialMediaProfile:
     username = ""
     webAddr = ""
     sherlockID = ""
+    status = ""
+    link2Profile =""
 
     def __init__(self, web, id):
         self.setWebAddr(web)
@@ -17,5 +19,5 @@ class socialMediaProfile:
         self.webAddr = web
 
     def getlink2Profile(self):
-        return self.webAddr + self.username
+        return self.link2Profile
 

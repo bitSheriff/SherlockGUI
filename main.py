@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QFil
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import *
 import webbrowser
-
+import csv
 from socialMediaProfile import socialMediaProfile
 from sherlockAdapter import sherlockAdapter
 
@@ -34,12 +34,11 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         facebook = socialMediaProfile("https://www.facebook.com/", "facebook")
         instagram = socialMediaProfile("https://www.instagram.com/", "instagram")
 
-    ##
-    # @brief    Name of the splitted output files
-    # @details  The single files will be appended by _#
-    split_outputNameString = ""
 
-
+    soc = {
+        "facebook" : socialMediaProfile("https://www.facebook.com/", "facebook"),
+        "instagram" : socialMediaProfile("https://www.instagram.com/", "instagram")
+    }
 
     ##
     # @brief    Init
@@ -77,9 +76,9 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def checkWantedProfiles(self):
         if self.check_facebook.isChecked() :
-            sherlockAdapter.addSearchProfile("facebook")
+            self.sherlock.addSearchProfile("facebook")
         if self.check_instagram.isChecked():
-            sherlockAdapter.addSearchProfile("instagram")
+            self.sherlock.addSearchProfile("instagram")
 
     def checkUsername(self):
         self.sherlock.addUsername(self.input_name.text())
@@ -96,7 +95,9 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.sherlock.setTimeout(self.input_timeout.value())
 
-        self.sherlock.investigate()
+        #self.sherlock.investigate()
+
+        self.readCSV()
 
         print("Investigation finished")
         self.btn_investigate.setEnabled(True)
@@ -105,10 +106,21 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         filename = "discoveries.txt"
         webbrowser.open(filename)
 
+    def readCSV(self):
+        with open("Nutzer.csv") as csvDataFile:
+            csvReader = csv.reader(csvDataFile)
+            for row in csvReader:
+                if row[6] == "response_time_s":
+                    continue
+                try:
+                    self.soc[str(row[1]).lower()].status = str(row[5])
+                    self.soc[str(row[1]).lower()].link2Profile = str(row[3])
+                except KeyError:
+                    print("Entry not found")
 
 
 
-    ##
+                ##
 # @brief    Main Call
 # @details  TODO
 if __name__ == "__main__":
