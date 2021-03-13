@@ -55,14 +55,18 @@
    <widget class="QPushButton" name="btn_investigate">
     <property name="geometry">
      <rect>
-      <x>670</x>
+      <x>690</x>
       <y>180</y>
-      <width>91</width>
-      <height>25</height>
+      <width>41</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Investigate</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>res/search.png</normaloff>res/search.png</iconset>
     </property>
    </widget>
    <widget class="QCheckBox" name="check_facebook">
@@ -404,14 +408,18 @@
    <widget class="QPushButton" name="btn_openResults">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>210</y>
-      <width>91</width>
-      <height>25</height>
+      <x>690</x>
+      <y>220</y>
+      <width>41</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>open results</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>res/file.png</normaloff>res/file.png</iconset>
     </property>
    </widget>
   </widget>
