@@ -422,6 +422,26 @@
       <normaloff>res/file.png</normaloff>res/file.png</iconset>
     </property>
    </widget>
+   <widget class="QLineEdit" name="input_name">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>110</y>
+      <width>113</width>
+      <height>25</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="input_timeout">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>180</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

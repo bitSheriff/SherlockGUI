@@ -82,7 +82,7 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             sherlockAdapter.addSearchProfile("instagram")
 
     def checkUsername(self):
-        self.sherlock.addUsername("test")
+        self.sherlock.addUsername(self.input_name.text())
 
     def investigate(self):
         print("Investigation started")
@@ -93,6 +93,8 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.checkUsername()
 
         self.checkWantedProfiles()
+
+        self.sherlock.setTimeout(self.input_timeout.value())
 
         self.sherlock.investigate()
 

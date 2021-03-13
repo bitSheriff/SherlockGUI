@@ -10,6 +10,7 @@ class sherlockAdapter:
     __generalSettings = " --print-found " + " -o discoveries.txt"
     __fullResult = ""
     __usernames = ""
+    __timeout = 0
 
     def __init__(self):
         self.__wantedProfiles = ""
@@ -20,8 +21,15 @@ class sherlockAdapter:
     def addUsername(self, usr):
         self.__usernames += " " + usr
 
+    def setTimeout(self, time):
+        self.__timeout = time
+
+    def __getTimeoutStr(self):
+        if self.__timeout > 0:
+            return " --timeout " + str(self.__timeout)
+
     def investigate(self):
-        cmd = "python3 sherlock/sherlock" + self.__usernames + self.__wantedProfiles + self.__generalSettings
+        cmd = "python3 sherlock/sherlock" + self.__usernames + self.__wantedProfiles + self.__getTimeoutStr() + self.__generalSettings
         self.__fullResult = os.popen(cmd).read()
         print(self.__fullResult)
 
