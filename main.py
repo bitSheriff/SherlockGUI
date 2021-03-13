@@ -7,6 +7,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QFileDialog
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import *
+import webbrowser
 
 qtcreator_file  = "sherlockGUI.ui" # Enter file here.
 Ui_MainWindow, QtBaseClass = uic.loadUiType(qtcreator_file)
@@ -21,11 +22,17 @@ Ui_MainWindow, QtBaseClass = uic.loadUiType(qtcreator_file)
 class AudmergeWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     # Variables
+    webpages = {
+        "facebook" : "https://www.facebook.com"
+    }
+
 
     ##
     # @brief    Name of the splitted output files
     # @details  The single files will be appended by _#
     split_outputNameString = ""
+
+
 
     ##
     # @brief    Init
@@ -37,18 +44,28 @@ class AudmergeWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
 
+        self.deactivateAllSocialBtns()
+
 
 
         # Setup #
 
 
         # Connections #
+        self.btn_facebook.clicked.connect(self.openFacebook)
 
 
+    def deactivateAllSocialBtns(self):
+        self.btn_facebook.setEnabled(False)
+
+    def opensite(self, string):
+        webbrowser.open(string)
+
+    def openFacebook(self):
+        self.opensite(self.webpages["facebook"])
 
 
-
-##
+    ##
 # @brief    Main Call
 # @details  TODO
 if __name__ == "__main__":
