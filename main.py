@@ -30,12 +30,8 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     sherlock = sherlockAdapter()
 
-    class socials:
-        facebook = socialMediaProfile("https://www.facebook.com/", "facebook")
-        instagram = socialMediaProfile("https://www.instagram.com/", "instagram")
 
-
-    soc = {
+    socials = {
         "facebook" : socialMediaProfile("https://www.facebook.com/", "facebook"),
         "instagram" : socialMediaProfile("https://www.instagram.com/", "instagram")
     }
@@ -49,7 +45,7 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         QtWidgets.QMainWindow.__init__(self)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
-
+        self.deactivateBrokenSocials()
         self.deactivateAllSocialBtns()
 
 
@@ -63,6 +59,9 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.btn_openResults.clicked.connect(self.openResultFile)
 
+    def deactivateBrokenSocials(self):
+        self.btn_instagram.setEnabled(False)
+        self.check_instagram.enable = False
 
     def deactivateAllSocialBtns(self):
         self.btn_facebook.setEnabled(False)
@@ -72,13 +71,17 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         webbrowser.open(string)
 
     def openFacebook(self):
-        self.opensite(self.socials.facebook.getlink2Profile())
+        self.opensite(self.socials["facebook"].getlink2Profile())
 
     def checkWantedProfiles(self):
         if self.check_facebook.isChecked() :
             self.sherlock.addSearchProfile("facebook")
         if self.check_instagram.isChecked():
             self.sherlock.addSearchProfile("instagram")
+
+    def setFoundProfileBtns(self):
+        if self.socials["facebook"].link2Profile != "":
+            self.btn_facebook.setEnabled(True)
 
     def checkUsername(self):
         self.sherlock.addUsername(self.input_name.text())
@@ -99,6 +102,8 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.readCSV()
 
+        self.setFoundProfileBtns()
+
         print("Investigation finished")
         self.btn_investigate.setEnabled(True)
 
@@ -107,14 +112,14 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         webbrowser.open(filename)
 
     def readCSV(self):
-        with open("Nutzer.csv") as csvDataFile:
+        with open("Benjamin.Mandl.csv") as csvDataFile:
             csvReader = csv.reader(csvDataFile)
             for row in csvReader:
                 if row[6] == "response_time_s":
                     continue
                 try:
-                    self.soc[str(row[1]).lower()].status = str(row[5])
-                    self.soc[str(row[1]).lower()].link2Profile = str(row[3])
+                    self.socials[str(row[1]).lower()].status = str(row[5])
+                    self.socials[str(row[1]).lower()].link2Profile = str(row[3])
                 except KeyError:
                     print("Entry not found")
 

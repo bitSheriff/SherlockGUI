@@ -40,6 +40,6 @@ if __name__ == "__main__":
 
     adapter.addSearchProfile("facebook")
     adapter.addSearchProfile("gitlab")
-    adapter.addUsername("Nutzer")
+    adapter.addUsername("Benjamin.Mandl")
 
     adapter.investigate()

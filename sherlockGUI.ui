@@ -70,6 +70,9 @@
     </property>
    </widget>
    <widget class="QCheckBox" name="check_facebook">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -112,6 +115,9 @@
     </property>
    </widget>
    <widget class="QCheckBox" name="check_instagram">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>40</x>
