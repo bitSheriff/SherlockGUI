@@ -2,7 +2,6 @@
 
 # Qt libraries
 import sys
-
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QFileDialog
 from PyQt5.QtGui import QIcon
@@ -10,6 +9,8 @@ from PyQt5.QtCore import *
 import webbrowser
 
 from socialMediaProfile import socialMediaProfile
+from sherlockAdapter import sherlockAdapter
+
 
 qtcreator_file  = "sherlockGUI.ui" # Enter file here.
 Ui_MainWindow, QtBaseClass = uic.loadUiType(qtcreator_file)
@@ -24,13 +25,12 @@ Ui_MainWindow, QtBaseClass = uic.loadUiType(qtcreator_file)
 class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     # Variables
-    webpages = {
-        "facebook" : "https://www.facebook.com"
-    }
+
+    sherlock = sherlockAdapter()
 
     class socials:
-        facebook = socialMediaProfile("https://www.facebook.com/")
-        instagram = socialMediaProfile("https://www.instagram.com/")
+        facebook = socialMediaProfile("https://www.facebook.com/", "facebook")
+        instagram = socialMediaProfile("https://www.instagram.com/", "instagram")
 
     ##
     # @brief    Name of the splitted output files
@@ -71,11 +71,19 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def openFacebook(self):
         self.opensite(self.socials.facebook.getlink2Profile())
 
+    def checkWantedProfiles(self):
+        if self.check_facebook.isChecked() :
+            sherlockAdapter.addSearchProfile("facebook")
+
     def investigate(self):
         print("Investigation started")
 
         # deactivate button until investigation finished
         self.btn_investigate.setEnabled(False)
+
+       # self.checkWantedProfiles()
+
+        self.sherlock.investigate()
 
         print("Investigation finished")
         self.btn_investigate.setEnabled(True)

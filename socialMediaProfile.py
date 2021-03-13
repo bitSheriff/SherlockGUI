@@ -4,9 +4,11 @@ class socialMediaProfile:
 
     username = ""
     webAddr = ""
+    sherlockID = ""
 
-    def __init__(self, web):
+    def __init__(self, web, id):
         self.setWebAddr(web)
+        self.sherlockID = id
 
     def setUsername(self, usr):
         self.username = usr
