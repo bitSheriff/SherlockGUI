@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>SherlockGUI</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>res/sherlock.png</normaloff>res/sherlock.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="sherlockIcon">
