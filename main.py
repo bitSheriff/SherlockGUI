@@ -9,23 +9,28 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import *
 import webbrowser
 
+from socialMediaProfile import socialMediaProfile
+
 qtcreator_file  = "sherlockGUI.ui" # Enter file here.
 Ui_MainWindow, QtBaseClass = uic.loadUiType(qtcreator_file)
 
 
 ##
-# @brief    Audmerge Class
+# @brief    SherlockGUI Class
 # @details  TODO
 #
 # @param    QtWidgets.QMainWindow       TODO
 # @param    Ui_MainWindow               TODO
-class AudmergeWindow(QtWidgets.QMainWindow, Ui_MainWindow):
+class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     # Variables
     webpages = {
         "facebook" : "https://www.facebook.com"
     }
 
+    class socials:
+        facebook = socialMediaProfile("https://www.facebook.com/")
+        instagram = socialMediaProfile("https://www.instagram.com/")
 
     ##
     # @brief    Name of the splitted output files
@@ -53,16 +58,28 @@ class AudmergeWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         # Connections #
         self.btn_facebook.clicked.connect(self.openFacebook)
+        self.btn_investigate.clicked.connect(self.investigate)
 
 
     def deactivateAllSocialBtns(self):
         self.btn_facebook.setEnabled(False)
+        self.btn_instagram.setEnabled(False)
 
     def opensite(self, string):
         webbrowser.open(string)
 
     def openFacebook(self):
-        self.opensite(self.webpages["facebook"])
+        self.opensite(self.socials.facebook.getlink2Profile())
+
+    def investigate(self):
+        print("Investigation started")
+
+        # deactivate button until investigation finished
+        self.btn_investigate.setEnabled(False)
+
+        print("Investigation finished")
+        self.btn_investigate.setEnabled(True)
+
 
 
     ##
@@ -70,7 +87,6 @@ class AudmergeWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 # @details  TODO
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    window = AudmergeWindow()
-    window.setWindowIcon( QtGui.QIcon('icons/favicon.ico') )
+    window = SherlockGUIWindow()
     window.show()
     sys.exit(app.exec_())

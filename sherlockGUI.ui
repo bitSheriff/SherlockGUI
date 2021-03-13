@@ -66,7 +66,7 @@
      <rect>
       <x>40</x>
       <y>310</y>
-      <width>121</width>
+      <width>81</width>
       <height>23</height>
      </rect>
     </property>
@@ -77,14 +77,60 @@
    <widget class="QPushButton" name="btn_facebook">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>140</x>
       <y>310</y>
-      <width>83</width>
+      <width>25</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
-     <string>open</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>res/facebook.png</normaloff>res/facebook.png</iconset>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="check_instagram">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>340</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Instagram</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_instagram">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>340</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>res/instagram.png</normaloff>res/instagram.png</iconset>
     </property>
     <property name="checkable">
      <bool>false</bool>
