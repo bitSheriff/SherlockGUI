@@ -98,7 +98,7 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.sherlock.setTimeout(self.input_timeout.value())
 
-        #self.sherlock.investigate()
+        self.sherlock.investigate()
 
         self.readCSV()
 
