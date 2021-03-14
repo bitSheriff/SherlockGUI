@@ -105,13 +105,13 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.sherlock.addSearchProfile("twitter")
 
     def setFoundProfileBtns(self):
-        if self.socials["facebook"].link2Profile != "":
+        if self.socials["facebook"].link2Profile != "" and self.socials["facebook"].httpStatus == 200:
             self.btn_facebook.setEnabled(True)
-        if self.socials["reddit"].link2Profile != "":
+        if self.socials["reddit"].link2Profile != "" and self.socials["reddit"].httpStatus == 200:
             self.btn_reddit.setEnabled(True)
-        if self.socials["twitch"].link2Profile != "":
+        if self.socials["twitch"].link2Profile != "" and self.socials["twitch"].httpStatus == 200:
             self.btn_twitch.setEnabled(True)
-        if self.socials["twitter"].link2Profile != "":
+        if self.socials["twitter"].link2Profile != "" and self.socials["twitter"].httpStatus == 200:
             self.btn_twitter.setEnabled(True)
 
     def checkUsername(self):
@@ -160,6 +160,7 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 try:
                     self.socials[str(row[1]).lower()].status = str(row[5])
                     self.socials[str(row[1]).lower()].link2Profile = str(row[3])
+                    self.socials[str(row[1]).lower()].httpStatus = str(row[6])
                 except KeyError:
                     print("Entry not found")
 
