@@ -34,6 +34,8 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     socials = {
         "facebook":     socialMediaProfile("https://www.facebook.com/", "facebook"),
         "reddit":       socialMediaProfile("https://www.reddit.com/user/", "reddit"),
+        "twitch":       socialMediaProfile("https://www.twitch.com/", "twitch"),
+        "twitter":      socialMediaProfile("https://www.twitter.com/", "twitter"),
         "instagram":    socialMediaProfile("https://www.instagram.com/", "instagram")
     }
 
@@ -57,6 +59,8 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # Connections #
         self.btn_facebook.clicked.connect(self.openFacebook)
         self.btn_reddit.clicked.connect(self.openReddit)
+        self.btn_twitch.clicked.connect(self.openTwitch)
+        self.btn_twitter.clicked.connect(self.openTwitter)
 
         self.btn_investigate.clicked.connect(self.investigate)
 
@@ -69,6 +73,9 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def deactivateAllSocialBtns(self):
         self.btn_facebook.setEnabled(False)
         self.btn_instagram.setEnabled(False)
+        self.btn_reddit.setEnabled(False)
+        self.btn_twitch.setEnabled(False)
+        self.btn_twitter.setEnabled(False)
 
     def opensite(self, string):
         webbrowser.open(string)
@@ -79,6 +86,12 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def openReddit(self):
         self.opensite(self.socials["reddit"].getlink2Profile())
 
+    def openTwitch(self):
+        self.opensite(self.socials["twitch"].getlink2Profile())
+
+    def openTwitter(self):
+        self.opensite(self.socials["twitter"].getlink2Profile())
+
     def checkWantedProfiles(self):
         if self.check_facebook.isChecked() :
             self.sherlock.addSearchProfile("facebook")
@@ -86,12 +99,20 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.sherlock.addSearchProfile("instagram")
         if self.check_reddit.isChecked():
             self.sherlock.addSearchProfile("reddit")
+        if self.check_twitch.isChecked():
+            self.sherlock.addSearchProfile("twitch")
+        if self.check_twitter.isChecked():
+            self.sherlock.addSearchProfile("twitter")
 
     def setFoundProfileBtns(self):
         if self.socials["facebook"].link2Profile != "":
             self.btn_facebook.setEnabled(True)
         if self.socials["reddit"].link2Profile != "":
             self.btn_reddit.setEnabled(True)
+        if self.socials["twitch"].link2Profile != "":
+            self.btn_twitch.setEnabled(True)
+        if self.socials["twitter"].link2Profile != "":
+            self.btn_twitter.setEnabled(True)
 
     def checkUsername(self):
         self.sherlock.addUsername(self.input_name.text())
