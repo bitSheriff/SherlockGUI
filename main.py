@@ -92,16 +92,25 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # deactivate button until investigation finished
         self.btn_investigate.setEnabled(False)
 
+        # deactivate all social buttons for new search
+        self.deactivateBrokenSocials()
+
+        # send the username to the sherlock adapter
         self.checkUsername()
 
+        # send the wanted social media profiles to sherlock adapter
         self.checkWantedProfiles()
 
+        # configure the timeout
         self.sherlock.setTimeout(self.input_timeout.value())
 
+        # start sherlock
         self.sherlock.investigate()
 
+        # read the csv of the searched social media profiles
         self.readCSV()
 
+        # activate the buttons of the found profiles
         self.setFoundProfileBtns()
 
         print("Investigation finished")
