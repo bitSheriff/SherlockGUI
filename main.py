@@ -63,7 +63,7 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.btn_twitter.clicked.connect(self.openTwitter)
 
         self.btn_investigate.clicked.connect(self.investigate)
-
+        self.btn_trashbin.clicked.connect(self.trashBinClear)
         self.btn_openResults.clicked.connect(self.openResultFile)
 
     def deactivateBrokenSocials(self):
@@ -116,6 +116,14 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def checkUsername(self):
         self.sherlock.addUsername(self.input_name.text())
+
+    def trashBinClear(self):
+        self.input_name.setText("")
+        self.check_facebook.setChecked(False)
+        self.check_instagram.setChecked(False)
+        self.check_reddit.setChecked(False)
+        self.check_twitch.setChecked(False)
+        self.check_twitter.setChecked(False)
 
     def investigate(self):
         print("Investigation started")

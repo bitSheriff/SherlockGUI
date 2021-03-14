@@ -369,7 +369,7 @@
      <string>Skype</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_skype_2">
+   <widget class="QPushButton" name="btn_spotify">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -431,21 +431,84 @@
    <widget class="QLineEdit" name="input_name">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>110</y>
-      <width>113</width>
+      <x>20</x>
+      <y>100</y>
+      <width>211</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string/>
+    </property>
+    <property name="toolTipDuration">
+     <number>-1</number>
+    </property>
+    <property name="placeholderText">
+     <string>Username</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QSpinBox" name="input_timeout">
     <property name="geometry">
      <rect>
-      <x>610</x>
+      <x>620</x>
       <y>180</y>
-      <width>51</width>
+      <width>41</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="toolTip">
+     <string>Timeout</string>
+    </property>
+    <property name="toolTipDuration">
+     <number>3</number>
+    </property>
+    <property name="whatsThis">
+     <string>Timeout</string>
+    </property>
+    <property name="frame">
+     <bool>true</bool>
+    </property>
+    <property name="suffix">
+     <string>s</string>
+    </property>
+    <property name="prefix">
+     <string notr="true" extracomment="s"/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_username">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>80</y>
+      <width>221</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Enter username for investigation</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_trashbin">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>220</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>res/trashBin.png</normaloff>res/trashBin.png</iconset>
     </property>
    </widget>
   </widget>
