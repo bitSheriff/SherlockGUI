@@ -32,8 +32,9 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
     socials = {
-        "facebook" : socialMediaProfile("https://www.facebook.com/", "facebook"),
-        "instagram" : socialMediaProfile("https://www.instagram.com/", "instagram")
+        "facebook":     socialMediaProfile("https://www.facebook.com/", "facebook"),
+        "reddit":       socialMediaProfile("https://www.reddit.com/user/", "reddit"),
+        "instagram":    socialMediaProfile("https://www.instagram.com/", "instagram")
     }
 
     ##
@@ -55,6 +56,8 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         # Connections #
         self.btn_facebook.clicked.connect(self.openFacebook)
+        self.btn_reddit.clicked.connect(self.openReddit)
+
         self.btn_investigate.clicked.connect(self.investigate)
 
         self.btn_openResults.clicked.connect(self.openResultFile)
@@ -73,15 +76,22 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def openFacebook(self):
         self.opensite(self.socials["facebook"].getlink2Profile())
 
+    def openReddit(self):
+        self.opensite(self.socials["reddit"].getlink2Profile())
+
     def checkWantedProfiles(self):
         if self.check_facebook.isChecked() :
             self.sherlock.addSearchProfile("facebook")
         if self.check_instagram.isChecked():
             self.sherlock.addSearchProfile("instagram")
+        if self.check_reddit.isChecked():
+            self.sherlock.addSearchProfile("reddit")
 
     def setFoundProfileBtns(self):
         if self.socials["facebook"].link2Profile != "":
             self.btn_facebook.setEnabled(True)
+        if self.socials["reddit"].link2Profile != "":
+            self.btn_reddit.setEnabled(True)
 
     def checkUsername(self):
         self.sherlock.addUsername(self.input_name.text())
