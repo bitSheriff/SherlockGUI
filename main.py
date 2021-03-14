@@ -121,7 +121,7 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         webbrowser.open(filename)
 
     def readCSV(self):
-        with open("Benjamin.Mandl.csv") as csvDataFile:
+        with open(self.input_name.text() + ".csv") as csvDataFile:
             csvReader = csv.reader(csvDataFile)
             for row in csvReader:
                 if row[6] == "response_time_s":
