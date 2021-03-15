@@ -36,6 +36,9 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         "reddit":       socialMediaProfile("https://www.reddit.com/user/", "reddit"),
         "twitch":       socialMediaProfile("https://www.twitch.com/", "twitch"),
         "twitter":      socialMediaProfile("https://www.twitter.com/", "twitter"),
+        "google":       socialMediaProfile("https://www.google.com/", "google"),
+        "skype":        socialMediaProfile("https://www.skype.com/", "skype"),
+        "spotify":      socialMediaProfile("https://www.spotify.com/", "spotify"),
         "instagram":    socialMediaProfile("https://www.instagram.com/", "instagram")
     }
 
@@ -61,6 +64,9 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.btn_reddit.clicked.connect(self.openReddit)
         self.btn_twitch.clicked.connect(self.openTwitch)
         self.btn_twitter.clicked.connect(self.openTwitter)
+        self.btn_google.clicked.connect(self.openGoogle)
+        self.btn_skype.clicked.connect(self.openSkype)
+        self.btn_spotify.clicked.connect(self.openSpotify)
 
         self.btn_investigate.clicked.connect(self.investigate)
         self.btn_trashbin.clicked.connect(self.trashBinClear)
@@ -76,6 +82,9 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.btn_reddit.setEnabled(False)
         self.btn_twitch.setEnabled(False)
         self.btn_twitter.setEnabled(False)
+        self.btn_google.setEnabled(False)
+        self.btn_skype.setEnabled(False)
+        self.btn_spotify.setEnabled(False)
 
     def opensite(self, string):
         webbrowser.open(string)
@@ -92,6 +101,15 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def openTwitter(self):
         self.opensite(self.socials["twitter"].getlink2Profile())
 
+    def openGoogle(self):
+        self.opensite(self.socials["google"].getlink2Profile())
+
+    def openSkype(self):
+        self.opensite(self.socials["skype"].getlink2Profile())
+
+    def openSpotify(self):
+        self.opensite(self.socials["spotify"].getlink2Profile())
+
     def checkWantedProfiles(self):
         if self.check_facebook.isChecked() :
             self.sherlock.addSearchProfile("facebook")
@@ -103,16 +121,28 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.sherlock.addSearchProfile("twitch")
         if self.check_twitter.isChecked():
             self.sherlock.addSearchProfile("twitter")
+        if self.check_google.isChecked():
+            self.sherlock.addSearchProfile("google")
+        if self.check_skype.isChecked():
+            self.sherlock.addSearchProfile("skype")
+        if self.check_spotify.isChecked():
+            self.sherlock.addSearchProfile("spotify")
 
     def setFoundProfileBtns(self):
-        if self.socials["facebook"].link2Profile != "" and self.socials["facebook"].httpStatus == 200:
+        if self.socials["facebook"].link2Profile != "" and self.socials["facebook"].httpStatus == "200":
             self.btn_facebook.setEnabled(True)
-        if self.socials["reddit"].link2Profile != "" and self.socials["reddit"].httpStatus == 200:
+        if self.socials["reddit"].link2Profile != "" and self.socials["reddit"].httpStatus == "200":
             self.btn_reddit.setEnabled(True)
-        if self.socials["twitch"].link2Profile != "" and self.socials["twitch"].httpStatus == 200:
+        if self.socials["twitch"].link2Profile != "" and self.socials["twitch"].httpStatus == "200":
             self.btn_twitch.setEnabled(True)
-        if self.socials["twitter"].link2Profile != "" and self.socials["twitter"].httpStatus == 200:
+        if self.socials["twitter"].link2Profile != "" and self.socials["twitter"].httpStatus == "200":
             self.btn_twitter.setEnabled(True)
+        if self.socials["google"].link2Profile != "" and self.socials["google"].httpStatus == "200":
+            self.btn_google.setEnabled(True)
+        if self.socials["skype"].link2Profile != "" and self.socials["skype"].httpStatus == "200":
+            self.btn_skype.setEnabled(True)
+        if self.socials["spotify"].link2Profile != "" and self.socials["spotify"].httpStatus == "200":
+            self.btn_spotify.setEnabled(True)
 
     def checkUsername(self):
         self.sherlock.addUsername(self.input_name.text())
@@ -124,6 +154,9 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.check_reddit.setChecked(False)
         self.check_twitch.setChecked(False)
         self.check_twitter.setChecked(False)
+        self.check_google.setChecked(False)
+        self.check_skype.setChecked(False)
+        self.check_spotify.setChecked(False)
 
     def investigate(self):
         print("Investigation started")
@@ -166,9 +199,9 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 if row[6] == "response_time_s":
                     continue
                 try:
-                    self.socials[str(row[1]).lower()].status = str(row[5])
                     self.socials[str(row[1]).lower()].link2Profile = str(row[3])
-                    self.socials[str(row[1]).lower()].httpStatus = str(row[6])
+                    self.socials[str(row[1]).lower()].status = str(row[4])
+                    self.socials[str(row[1]).lower()].httpStatus = str(row[5])
                 except KeyError:
                     print("Entry not found")
 

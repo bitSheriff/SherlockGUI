@@ -6,8 +6,8 @@ class socialMediaProfile:
     webAddr = ""
     sherlockID = ""
     status = ""
-    link2Profile =""
-    httpStatus = 0
+    link2Profile = ""
+    httpStatus = "0"
 
     def __init__(self, web, id):
         self.setWebAddr(web)
