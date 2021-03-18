@@ -6,7 +6,7 @@ import subprocess
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QFileDialog
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import QIcon, QRegExpValidator
 from PyQt5.QtCore import *
 import webbrowser
 import csv
@@ -57,7 +57,8 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
         # Setup #
-
+        rx = QRegExp("[a-zA-Z]*[0-9]*\_*\-*")
+        self.input_name.setValidator(QRegExpValidator(rx))
 
         # Connections #
         self.btn_facebook.clicked.connect(self.openFacebook)
