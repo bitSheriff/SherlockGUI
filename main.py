@@ -169,6 +169,11 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.sherlock.addUsername(self.input_name.text())
 
     def trashBinClear(self):
+        # deactivate all buttons
+        self.deactivateAllSocialBtns()
+        self.deactivateBrokenSocials()
+
+        # reset input objects
         self.input_name.setText("")
         self.check_facebook.setChecked(False)
         self.check_instagram.setChecked(False)
