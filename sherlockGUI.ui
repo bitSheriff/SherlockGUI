@@ -359,7 +359,7 @@
        <string>TikTok</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_tiktok_2">
+     <widget class="QPushButton" name="btn_strava">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -717,30 +717,8 @@
      </attribute>
     </widget>
    </widget>
-   <widget class="QWebView" name="webView">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>330</y>
-      <width>541</width>
-      <height>371</height>
-     </rect>
-    </property>
-    <property name="url">
-     <url>
-      <string>about:blank</string>
-     </url>
-    </property>
-   </widget>
   </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QWebView</class>
-   <extends>QWidget</extends>
-   <header location="global">QtWebKitWidgets/QWebView</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
