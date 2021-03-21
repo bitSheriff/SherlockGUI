@@ -39,6 +39,7 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         "google":       socialMediaProfile("https://www.google.com/", "google"),
         "skype":        socialMediaProfile("https://www.skype.com/", "skype"),
         "spotify":      socialMediaProfile("https://www.spotify.com/", "spotify"),
+        "telegram": socialMediaProfile("https://www.t.me/", "telegram"),
         "instagram":    socialMediaProfile("https://www.instagram.com/", "instagram")
     }
 
@@ -68,6 +69,7 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.btn_google.clicked.connect(self.openGoogle)
         self.btn_skype.clicked.connect(self.openSkype)
         self.btn_spotify.clicked.connect(self.openSpotify)
+        self.btn_spotify.clicked.connect(self.openTelegram)
 
         self.btn_investigate.clicked.connect(self.investigate)
         self.btn_trashbin.clicked.connect(self.trashBinClear)
@@ -86,6 +88,7 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.btn_google.setEnabled(False)
         self.btn_skype.setEnabled(False)
         self.btn_spotify.setEnabled(False)
+        self.btn_telegram.setEnabled(False)
 
     def opensite(self, string):
         webbrowser.open(string)
@@ -111,6 +114,9 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def openSpotify(self):
         self.opensite(self.socials["spotify"].getlink2Profile())
 
+    def openTelegram(self):
+        self.opensite(self.socials["telegram"].getlink2Profile())
+
     def checkWantedProfiles(self):
         if self.check_facebook.isChecked() :
             self.sherlock.addSearchProfile("facebook")
@@ -128,6 +134,8 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.sherlock.addSearchProfile("skype")
         if self.check_spotify.isChecked():
             self.sherlock.addSearchProfile("spotify")
+        if self.check_telegram.isChecked():
+            self.sherlock.addSearchProfile("telegram")
 
     def setFoundProfileBtns(self):
         if self.socials["facebook"].link2Profile != "" and self.socials["facebook"].httpStatus == "200":
@@ -144,6 +152,8 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.btn_skype.setEnabled(True)
         if self.socials["spotify"].link2Profile != "" and self.socials["spotify"].httpStatus == "200":
             self.btn_spotify.setEnabled(True)
+        if self.socials["telegram"].link2Profile != "" and self.socials["telegram"].httpStatus == "200":
+            self.btn_telegram.setEnabled(True)
 
     def checkUsername(self):
         self.sherlock.addUsername(self.input_name.text())
@@ -158,6 +168,7 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.check_google.setChecked(False)
         self.check_skype.setChecked(False)
         self.check_spotify.setChecked(False)
+        self.check_telegram.setChecked(False)
 
     def investigate(self):
         print("Investigation started")
