@@ -41,6 +41,7 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         "spotify":      socialMediaProfile("spotify"),
         "telegram":     socialMediaProfile("telegram"),
         "tiktok":       socialMediaProfile("tiktok"),
+        "tinder":       socialMediaProfile("tinder"),
         "instagram":    socialMediaProfile("instagram")
     }
 
@@ -72,6 +73,7 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.btn_spotify.clicked.connect(self.openSpotify)
         self.btn_telegram.clicked.connect(self.openTelegram)
         self.btn_tiktok.clicked.connect(self.openTiktok)
+        self.btn_tinder.clicked.connect(self.openTinder)
 
         self.btn_investigate.clicked.connect(self.investigate)
         self.btn_trashbin.clicked.connect(self.trashBinClear)
@@ -92,6 +94,7 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.btn_spotify.setEnabled(False)
         self.btn_telegram.setEnabled(False)
         self.btn_tiktok.setEnabled(False)
+        self.btn_tinder.setEnabled(False)
 
     def opensite(self, string):
         webbrowser.open(string)
@@ -123,6 +126,9 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def openTiktok(self):
         self.opensite(self.socials["tiktok"].getlink2Profile())
 
+    def openTinder(self):
+        self.opensite(self.socials["tinder"].getlink2Profile())
+
     def checkWantedProfiles(self):
         if self.check_facebook.isChecked() :
             self.sherlock.addSearchProfile("facebook")
@@ -144,6 +150,8 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.sherlock.addSearchProfile("telegram")
         if self.check_tiktok.isChecked():
             self.sherlock.addSearchProfile("tiktok")
+        if self.check_tinder.isChecked():
+            self.sherlock.addSearchProfile("tinder")
 
     def setFoundProfileBtns(self):
         if self.socials["facebook"].link2Profile != "" and self.socials["facebook"].httpStatus == "200":
@@ -164,6 +172,8 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.btn_telegram.setEnabled(True)
         if self.socials["tiktok"].link2Profile != "" and self.socials["tiktok"].httpStatus == "200":
             self.btn_tiktok.setEnabled(True)
+        if self.socials["tinder"].link2Profile != "" and self.socials["tinder"].httpStatus == "200":
+            self.btn_tinder.setEnabled(True)
 
     def checkUsername(self):
         self.sherlock.addUsername(self.input_name.text())
@@ -185,6 +195,7 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.check_spotify.setChecked(False)
         self.check_telegram.setChecked(False)
         self.check_tiktok.setChecked(False)
+        self.check_tinder.setChecked(False)
 
     def investigate(self):
         print("Investigation started")
