@@ -32,16 +32,16 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
     socials = {
-        "facebook":     socialMediaProfile("https://www.facebook.com/", "facebook"),
-        "reddit":       socialMediaProfile("https://www.reddit.com/user/", "reddit"),
-        "twitch":       socialMediaProfile("https://www.twitch.com/", "twitch"),
-        "twitter":      socialMediaProfile("https://www.twitter.com/", "twitter"),
-        "google":       socialMediaProfile("https://www.google.com/", "google"),
-        "skype":        socialMediaProfile("https://www.skype.com/", "skype"),
-        "spotify":      socialMediaProfile("https://www.spotify.com/", "spotify"),
-        "telegram":     socialMediaProfile("https://www.t.me/", "telegram"),
-        "tiktok":       socialMediaProfile("https://www.tiktok.com/", "tiktok"),
-        "instagram":    socialMediaProfile("https://www.instagram.com/", "instagram")
+        "facebook":     socialMediaProfile("facebook"),
+        "reddit":       socialMediaProfile("reddit"),
+        "twitch":       socialMediaProfile("twitch"),
+        "twitter":      socialMediaProfile("twitter"),
+        "google":       socialMediaProfile("google"),
+        "skype":        socialMediaProfile("skype"),
+        "spotify":      socialMediaProfile("spotify"),
+        "telegram":     socialMediaProfile("telegram"),
+        "tiktok":       socialMediaProfile("tiktok"),
+        "instagram":    socialMediaProfile("instagram")
     }
 
     ##
