@@ -81,6 +81,8 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.btn_trashbin.clicked.connect(self.trashBinClear)
         self.btn_openResults.clicked.connect(self.openResultFile)
 
+        self.webView.load("ww.google.at")
+
     def deactivateBrokenSocials(self):
         self.btn_instagram.setEnabled(False)
         self.check_instagram.enable = False
