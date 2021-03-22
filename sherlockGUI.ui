@@ -21,10 +21,10 @@
    <widget class="QLabel" name="sherlockIcon">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>10</y>
-      <width>151</width>
-      <height>151</height>
+      <x>380</x>
+      <y>40</y>
+      <width>111</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="autoFillBackground">
@@ -55,8 +55,8 @@
    <widget class="QPushButton" name="btn_investigate">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>180</y>
+      <x>330</x>
+      <y>50</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -72,8 +72,8 @@
    <widget class="QPushButton" name="btn_openResults">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>220</y>
+      <x>330</x>
+      <y>90</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -111,8 +111,8 @@
    <widget class="QSpinBox" name="input_timeout">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>180</y>
+      <x>260</x>
+      <y>50</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -155,8 +155,8 @@
    <widget class="QPushButton" name="btn_trashbin">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>220</y>
+      <x>260</x>
+      <y>90</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -174,7 +174,7 @@
      <rect>
       <x>20</x>
       <y>150</y>
-      <width>481</width>
+      <width>471</width>
       <height>541</height>
      </rect>
     </property>
