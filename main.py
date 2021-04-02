@@ -65,17 +65,17 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.input_name.setValidator(QRegExpValidator(rx))
 
         # Connections #
-        self.btn_facebook.clicked.connect(self.openFacebook)
-        self.btn_reddit.clicked.connect(self.openReddit)
-        self.btn_twitch.clicked.connect(self.openTwitch)
-        self.btn_twitter.clicked.connect(self.openTwitter)
-        self.btn_google.clicked.connect(self.openGoogle)
-        self.btn_skype.clicked.connect(self.openSkype)
-        self.btn_spotify.clicked.connect(self.openSpotify)
-        self.btn_telegram.clicked.connect(self.openTelegram)
-        self.btn_tiktok.clicked.connect(self.openTiktok)
-        self.btn_tinder.clicked.connect(self.openTinder)
-        self.btn_strava.clicked.connect(self.openStrava)
+        self.btn_facebook.clicked.connect(lambda: self.opensite(self.socials["facebook"].getlink2Profile()))
+        self.btn_reddit.clicked.connect(lambda: self.opensite(self.socials["reddit"].getlink2Profile()))
+        self.btn_twitch.clicked.connect(lambda: self.opensite(self.socials["twitch"].getlink2Profile()))
+        self.btn_twitter.clicked.connect(lambda: self.opensite(self.socials["twitter"].getlink2Profile()))
+        self.btn_google.clicked.connect(lambda: self.opensite(self.socials["google"].getlink2Profile()))
+        self.btn_skype.clicked.connect(lambda: self.opensite(self.socials["skype"].getlink2Profile()))
+        self.btn_spotify.clicked.connect(lambda: self.opensite(self.socials["spotify"].getlink2Profile()))
+        self.btn_telegram.clicked.connect(lambda: self.opensite(self.socials["telegram"].getlink2Profile()))
+        self.btn_tiktok.clicked.connect(lambda: self.opensite(self.socials["tiktok"].getlink2Profile()))
+        self.btn_tinder.clicked.connect(lambda: self.opensite(self.socials["tinder"].getlink2Profile()))
+        self.btn_strava.clicked.connect(lambda: self.opensite(self.socials["strava"].getlink2Profile()))
 
         self.btn_investigate.clicked.connect(self.investigate)
         self.btn_trashbin.clicked.connect(self.trashBinClear)
@@ -117,41 +117,8 @@ class SherlockGUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def opensite(self, string):
         webbrowser.open(string)
 
-    def openFacebook(self):
-        self.opensite(self.socials["facebook"].getlink2Profile())
-
-    def openReddit(self):
-        self.opensite(self.socials["reddit"].getlink2Profile())
-
-    def openTwitch(self):
-        self.opensite(self.socials["twitch"].getlink2Profile())
-
-    def openTwitter(self):
-        self.opensite(self.socials["twitter"].getlink2Profile())
-
-    def openGoogle(self):
-        self.opensite(self.socials["google"].getlink2Profile())
-
-    def openSkype(self):
-        self.opensite(self.socials["skype"].getlink2Profile())
-
-    def openSpotify(self):
-        self.opensite(self.socials["spotify"].getlink2Profile())
-
-    def openTelegram(self):
-        self.opensite(self.socials["telegram"].getlink2Profile())
-
-    def openTiktok(self):
-        self.opensite(self.socials["tiktok"].getlink2Profile())
-
-    def openTinder(self):
-        self.opensite(self.socials["tinder"].getlink2Profile())
-
-    def openStrava(self):
-        self.opensite(self.socials["strava"].getlink2Profile())
-
     def checkWantedProfiles(self):
-        if self.check_facebook.isChecked() :
+        if self.check_facebook.isChecked():
             self.sherlock.addSearchProfile("facebook")
         if self.check_instagram.isChecked():
             self.sherlock.addSearchProfile("instagram")
