@@ -1,5 +1,5 @@
 # SherlockGUI
-This project is an graphical user interface wrapper for the popular socail hacking tool [Sherlock](https://github.com/sherlock-project/sherlock).
+This project is an graphical user interface wrapper for the popular social hacking tool [Sherlock](https://github.com/sherlock-project/sherlock).
 
 ![Logo](res/sherlock.png)
 
